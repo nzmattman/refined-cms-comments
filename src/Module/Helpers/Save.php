@@ -38,6 +38,8 @@ class Save implements FormBuilderCallbackInterface {
 
         // now send the new email message
         $formBuilderRepository->compileAndSend($request, $form);
+
+        return redirect()->back()->with('complete', 1)->with('form', $form);
     }
 
 }
