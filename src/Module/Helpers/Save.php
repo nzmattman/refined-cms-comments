@@ -21,18 +21,18 @@ class Save implements FormBuilderCallbackInterface {
             'commentable_id' => $id,
             'commentable_type' => $type,
             'parent_id' => $request->has('parent') ? $request->get('parent') : 0,
-            'name' => (isset($fields->Name) && $fields->Name) ? $fields->Name : null,
-            'comment' => (isset($fields->Comment) && $fields->Comment) ? $fields->Comment : null,
-            'email' => (isset($fields->Email) && $fields->Email) ? $fields->Email : null,
+            'name' => (isset($fields['Name']) && $fields['Name']) ? $fields['Name'] : null,
+            'comment' => (isset($fields['Comment']) && $fields['Comment']) ? $fields['Comment'] : null,
+            'email' => (isset($fields['Email']) && $fields['Email']) ? $fields['Email'] : null,
         ];
 
         $formBuilderRepository->store($insertData);
 
         // if they want to be remembered, store this in a cookie
-        if (isset($fields->{'Remember me for the next time I comment'}) && $fields->{'Remember me for the next time I comment'}) {
+        if (isset($fields['Remember me for the next time I comment']) && $fields['Remember me for the next time I comment']) {
             $contact = [];
-            $contact['name'] = (isset($fields->Name) && $fields->Name) ? $fields->Name : null;
-            $contact['email'] = (isset($fields->Email) && $fields->Email) ? $fields->Email : null;
+            $contact['name'] = (isset($fields['Name']) && $fields['Name']) ? $fields['Name'] : null;
+            $contact['email'] = (isset($fields['Email']) && $fields['Email']) ? $fields['Email'] : null;
             setcookie('comments', json_encode($contact), time() + (86400 * 30), "/"); // 86400 = 1 day
         }
 
