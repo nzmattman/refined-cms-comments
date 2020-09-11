@@ -4,9 +4,9 @@ namespace RefinedDigital\Comments\Module\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use RefinedDigital\Comments\Commands\Install;
-use RefinedDigital\CMS\Modules\Core\Models\PackageAggregate;
-use RefinedDigital\CMS\Modules\Core\Models\ModuleAggregate;
-use RefinedDigital\CMS\Modules\Core\Models\RouteAggregate;
+use RefinedDigital\CMS\Modules\Core\Aggregates\PackageAggregate;
+use RefinedDigital\CMS\Modules\Core\Aggregates\ModuleAggregate;
+use RefinedDigital\CMS\Modules\Core\Aggregates\RouteAggregate;
 
 class CommentServiceProvider extends ServiceProvider
 {
