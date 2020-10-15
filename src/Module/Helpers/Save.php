@@ -1,6 +1,6 @@
 <?php
 
-namespace RefinedDigital\Comments;
+namespace RefinedDigital\Comments\Helpers;
 
 use RefinedDigital\FormBuilder\Module\Contracts\FormBuilderCallbackInterface;
 use RefinedDigital\FormBuilder\Module\Http\Repositories\FormBuilderRepository;
