@@ -22,13 +22,15 @@ class CommentServiceProvider extends ServiceProvider
             __DIR__.'/../Resources/views',
         ]);
 
-        if ($this->app->runningInConsole()) {
-            if (\DB::connection()->getDatabaseName() && !\Schema::hasTable('comments')) {
-                $this->commands([
-                    Install::class
-                ]);
+        try {
+            if ($this->app->runningInConsole()) {
+                if (\DB::connection()->getDatabaseName() && !\Schema::hasTable('comments')) {
+                    $this->commands([
+                        Install::class
+                    ]);
+                }
             }
-        }
+        } catch (\Exception $e) {}
 
         $this->publishes([
             __DIR__.'/../../../config/comments.php' => config_path('comments.php'),
